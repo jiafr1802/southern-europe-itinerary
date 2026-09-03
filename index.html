@@ -245,6 +245,16 @@
     .restaurant p { margin: 0; color: rgba(247,241,229,.62); font-size: 11px; line-height: 1.65; }
     .map-link { align-self: center; display: inline-flex; align-items: center; gap: 6px; padding: 9px 11px; border: 1px solid rgba(255,255,255,.25); color: #fff; font-size: 10px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: .2s ease; }
     .map-link:hover { color: var(--ink); background: #e5b44d; border-color: #e5b44d; }
+    .snacks { margin-top: 18px; border: 1px solid rgba(255,255,255,.16); }
+    .snacks-head { padding: 22px; border-bottom: 1px solid rgba(255,255,255,.13); display: flex; align-items: end; justify-content: space-between; gap: 30px; }
+    .snacks-head h3 { margin: 0; font: 600 21px "Noto Serif SC", serif; }
+    .snacks-head p { max-width: 600px; margin: 0; color: rgba(247,241,229,.58); font-size: 11px; line-height: 1.6; text-align: right; }
+    .snack-groups { display: grid; grid-template-columns: 1fr 1fr; }
+    .snack-group + .snack-group { border-left: 1px solid rgba(255,255,255,.13); }
+    .snack-label { padding: 14px 22px; color: #e5b44d; border-bottom: 1px solid rgba(255,255,255,.1); font: 600 12px "Noto Serif SC", serif; }
+    .snack-plan { margin-top: 18px; padding: 17px 20px; display: grid; grid-template-columns: auto 1fr auto 1fr; gap: 12px; align-items: center; color: rgba(247,241,229,.72); border: 1px solid rgba(229,180,77,.35); background: rgba(229,180,77,.07); font-size: 11px; }
+    .snack-plan b { color: #fff; font-weight: 600; }
+    .snack-plan i { color: #e5b44d; font-style: normal; }
     .food-guide { margin-top: 18px; display: grid; grid-template-columns: 1.25fr .75fr; gap: 18px; }
     .dish-list, .food-warning { padding: 22px; border: 1px solid rgba(255,255,255,.16); }
     .dish-list h3, .food-warning h3 { margin: 0 0 13px; font: 600 15px "Noto Serif SC", serif; }
@@ -307,6 +317,8 @@
       .food-head { grid-template-columns: 1fr; gap: 18px; }
       .food-cities { grid-template-columns: 1fr; }
       .food-guide { grid-template-columns: 1fr; }
+      .snack-groups { grid-template-columns: 1fr; }
+      .snack-group + .snack-group { border-left: 0; border-top: 1px solid rgba(255,255,255,.13); }
     }
     @media (max-width: 620px) {
       .topbar { height: 58px; padding: 0 18px; }
@@ -330,6 +342,10 @@
       .restaurant { grid-template-columns: 1fr; }
       .map-link { justify-self: start; }
       .dishes { grid-template-columns: 1fr 1fr; }
+      .snacks-head { display: block; }
+      .snacks-head p { margin-top: 8px; text-align: left; }
+      .snack-plan { grid-template-columns: 1fr; }
+      .snack-plan i { transform: rotate(90deg); }
       footer { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -417,6 +433,37 @@
               </div>
             </article>
           </div>
+          <section class="snacks" aria-labelledby="madrid-snacks-title">
+            <header class="snacks-head">
+              <h3 id="madrid-snacks-title">马德里经典小吃</h3>
+              <p>时间有限直接选 La Campana + San Ginés；两者都在 Plaza Mayor 一带，很容易顺路完成。</p>
+            </header>
+            <div class="snack-groups">
+              <div class="snack-group">
+                <div class="snack-label">🦑 Bocadillo de calamares · 炸鱿鱼三明治</div>
+                <div class="restaurant">
+                  <div><small>首选 · 马德里街头小吃任务</small><h4>La Campana</h4><p>Plaza Mayor 旁的经典店。点最传统的炸鱿鱼三明治配 cerveza，不必加复杂酱料，逛老城时顺手吃即可。</p></div>
+                  <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=La+Campana+Calle+de+Botoneras+6+Madrid" target="_blank" rel="noopener">Google 地图 ↗</a>
+                </div>
+                <div class="restaurant">
+                  <div><small>隔壁老店 · 适合盲测</small><h4>Bar La Ideal</h4><p>就在 La Campana 隔壁，同样是几代人经营的 Plaza Mayor 传统店。两人可各买一个，一人一半做 blind test。</p></div>
+                  <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Bar+La+Ideal+Calle+de+Botoneras+4+Madrid" target="_blank" rel="noopener">Google 地图 ↗</a>
+                </div>
+              </div>
+              <div class="snack-group">
+                <div class="snack-label">🍫 Churros con chocolate · 吉事果配热巧克力</div>
+                <div class="restaurant">
+                  <div><small>第一次必选 · 1894 年老店</small><h4>Chocolatería San Ginés</h4><p>Sol / Plaza Mayor 附近的经典名店。点 chocolate con churros；两人可再加 porras，对比细脆与粗软两种口感。</p></div>
+                  <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Chocolateria+San+Gines+Madrid" target="_blank" rel="noopener">Google 地图 ↗</a>
+                </div>
+                <div class="restaurant">
+                  <div><small>当地早餐感 · 约 06:30–13:00</small><h4>Churrería Madrid 1883</h4><p>Malasaña 的老式早餐型 churrería。建议早上 9–10 点来一份 churros / porras 配巧克力或咖啡，再继续逛街区。</p></div>
+                  <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Churreria+Madrid+1883+Espiritu+Santo+8+Madrid" target="_blank" rel="noopener">Google 地图 ↗</a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="snack-plan"><b>最省心吃法</b><span>中午 Plaza Mayor → La Campana 炸鱿鱼三明治</span><i>→</i><span>晚上 / 夜宵 San Ginés → churros + porras + chocolate</span></div>
           <div class="food-guide">
             <div class="dish-list">
               <h3>不只 Paella · 看到这些也值得点</h3>
