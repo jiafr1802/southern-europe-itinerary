@@ -226,6 +226,35 @@
     .marker-dot { width: 30px; height: 30px; display: grid; place-items: center; border: 2px solid #fff; border-radius: 50%; color: #fff; background: var(--blue); box-shadow: 0 4px 16px rgba(28,33,31,.35); font: 600 11px "DM Sans", sans-serif; }
     .marker-dot.active { background: var(--red); transform: scale(1.18); }
 
+    .food { padding: 68px 4vw 72px; background: #20211e; color: #f7f1e5; }
+    .food-inner { max-width: 1180px; margin: 0 auto; }
+    .food-head { display: grid; grid-template-columns: .85fr 1.4fr; gap: 7vw; margin-bottom: 38px; align-items: end; }
+    .food-head .eyebrow { color: #e5b44d; }
+    .food-head h2 { margin: 0; font: 600 clamp(30px, 4vw, 51px)/1.15 "Noto Serif SC", serif; }
+    .food-intro { margin: 0; color: rgba(247,241,229,.7); font-size: 14px; line-height: 1.85; }
+    .food-intro strong { color: #fff; }
+    .food-cities { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .food-city { border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.035); }
+    .food-city-head { padding: 22px 22px 17px; border-bottom: 1px solid rgba(255,255,255,.13); display: flex; justify-content: space-between; align-items: baseline; gap: 18px; }
+    .food-city-head h3 { margin: 0; font: 600 21px "Noto Serif SC", serif; }
+    .food-city-head span { color: rgba(247,241,229,.48); font-size: 10px; text-transform: uppercase; letter-spacing: .12em; }
+    .restaurant { padding: 20px 22px; border-bottom: 1px solid rgba(255,255,255,.1); display: grid; grid-template-columns: 1fr auto; gap: 18px; }
+    .restaurant:last-child { border-bottom: 0; }
+    .restaurant small { display: block; margin-bottom: 5px; color: #e5b44d; font-size: 9px; font-weight: 600; letter-spacing: .08em; }
+    .restaurant h4 { margin: 0 0 6px; font: 600 16px "Noto Serif SC", serif; }
+    .restaurant p { margin: 0; color: rgba(247,241,229,.62); font-size: 11px; line-height: 1.65; }
+    .map-link { align-self: center; display: inline-flex; align-items: center; gap: 6px; padding: 9px 11px; border: 1px solid rgba(255,255,255,.25); color: #fff; font-size: 10px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: .2s ease; }
+    .map-link:hover { color: var(--ink); background: #e5b44d; border-color: #e5b44d; }
+    .food-guide { margin-top: 18px; display: grid; grid-template-columns: 1.25fr .75fr; gap: 18px; }
+    .dish-list, .food-warning { padding: 22px; border: 1px solid rgba(255,255,255,.16); }
+    .dish-list h3, .food-warning h3 { margin: 0 0 13px; font: 600 15px "Noto Serif SC", serif; }
+    .dishes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
+    .dish { padding-left: 11px; border-left: 2px solid var(--red); }
+    .dish b { display: block; font-size: 11px; }
+    .dish span, .food-warning p { color: rgba(247,241,229,.58); font-size: 10px; line-height: 1.6; }
+    .food-warning { background: rgba(180,59,47,.12); border-color: rgba(180,59,47,.45); }
+    .food-warning p { margin: 0; }
+
     .notes { padding: 44px 4vw 54px; background: var(--paper-strong); }
     .notes-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: .8fr 2.2fr; gap: 7vw; }
     .notes h2 { margin: 0; font: 600 24px "Noto Serif SC", serif; }
@@ -256,6 +285,7 @@
       body.map-view .planner { display: none; }
       body.map-view .map-panel { display: block; }
       body.map-view .intro,
+      body.map-view .food,
       body.map-view .notes,
       body.map-view footer { display: none; }
       .mobile-tabs {
@@ -274,6 +304,9 @@
       .mobile-tabs button { padding: 10px; border: 0; background: transparent; color: rgba(255,255,255,.6); font-size: 12px; }
       .mobile-tabs button.active { color: var(--ink); background: var(--paper-strong); }
       .notes-inner { grid-template-columns: 1fr; gap: 28px; }
+      .food-head { grid-template-columns: 1fr; gap: 18px; }
+      .food-cities { grid-template-columns: 1fr; }
+      .food-guide { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
       .topbar { height: 58px; padding: 0 18px; }
@@ -293,6 +326,10 @@
       .event { grid-template-columns: 43px 6px 1fr; gap: 7px; font-size: 11px; }
       .notes { padding: 38px 20px 80px; }
       .note-grid { grid-template-columns: 1fr; gap: 21px; }
+      .food { padding: 48px 20px 68px; }
+      .restaurant { grid-template-columns: 1fr; }
+      .map-link { justify-self: start; }
+      .dishes { grid-template-columns: 1fr 1fr; }
       footer { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -344,6 +381,55 @@
           <div class="map-top"><div class="map-label"><small>Journey map</small><strong>南欧路线总览</strong></div></div>
           <div class="map-caption" id="mapCaption"></div>
         </aside>
+      </section>
+
+      <section class="food" id="food">
+        <div class="food-inner">
+          <div class="food-head">
+            <div><p class="eyebrow">Eat along the way</p><h2>沿途吃什么</h2></div>
+            <p class="food-intro">如果只留一顿海鲜饭，优先放在<strong>巴塞罗那的靠海午餐</strong>。真正靠谱的 paella 通常现做，需要等待 20–40 分钟；除了经典海鲜饭，也值得尝试更有加泰罗尼亚海岸特色的黑米饭与海鲜面。</p>
+          </div>
+          <div class="food-cities">
+            <article class="food-city">
+              <header class="food-city-head"><h3>巴塞罗那</h3><span>Barcelona · First choice</span></header>
+              <div class="restaurant">
+                <div><small>首选 · 为饭本身去</small><h4>Can Solé</h4><p>1903 年起经营的 Barceloneta 渔港老店，以 rice 与 seafood 见长。推荐海鲜干饭，再搭配一份烤或炒海鲜前菜。</p></div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Can+Sole+Barcelona" target="_blank" rel="noopener">Google 地图 ↗</a>
+              </div>
+              <div class="restaurant">
+                <div><small>氛围首选 · 海边午餐</small><h4>Xiringuito Escribà</h4><p>Bogatell 海滩边，适合“海边 → paella → 沙滩散步”。多人可点一锅 fish paella 加一锅 arròs negre。</p></div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Xiringuito+Escriba+Barcelona" target="_blank" rel="noopener">Google 地图 ↗</a>
+              </div>
+              <div class="restaurant">
+                <div><small>历史氛围 · 正式晚餐</small><h4>7 Portes</h4><p>1836 年开业，靠近 Gothic Quarter 与 El Born。适合老建筑、老餐厅与经典 Barcelona 氛围的一顿晚餐。</p></div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=7+Portes+Barcelona" target="_blank" rel="noopener">Google 地图 ↗</a>
+              </div>
+            </article>
+            <article class="food-city">
+              <header class="food-city-head"><h3>马德里</h3><span>Madrid · Rice specialists</span></header>
+              <div class="restaurant">
+                <div><small>认真吃米饭 · 瓦伦西亚风格</small><h4>Casa Benigna</h4><p>由 Alicante 背景的厨师主理，专攻 Valencian-style dry rice。如果更关心米饭火候与风味，而非海景，这家最值得去。</p></div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Casa+Benigna+Madrid" target="_blank" rel="noopener">Google 地图 ↗</a>
+              </div>
+              <div class="restaurant">
+                <div><small>市中心方便 · 传统米饭餐厅</small><h4>Arrocería Marina Ventura</h4><p>位于 Madrid Centro，传统直接、衔接市中心行程方便。若巴塞罗那时间太满，可把海鲜饭放在这里。</p></div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Arroceria+Marina+Ventura+Madrid" target="_blank" rel="noopener">Google 地图 ↗</a>
+              </div>
+            </article>
+          </div>
+          <div class="food-guide">
+            <div class="dish-list">
+              <h3>不只 Paella · 看到这些也值得点</h3>
+              <div class="dishes">
+                <div class="dish"><b>Paella de marisco</b><span>经典海鲜饭</span></div>
+                <div class="dish"><b>Arròs negre</b><span>墨鱼汁黑米饭</span></div>
+                <div class="dish"><b>Fideuà</b><span>短面条版海鲜饭</span></div>
+                <div class="dish"><b>Arroz de bogavante</b><span>龙虾米饭</span></div>
+              </div>
+            </div>
+            <aside class="food-warning"><h3>避坑提示</h3><p>绕开 La Rambla 周边门口放巨大成品照片、十几种语言菜单、几分钟就上桌的店。好米饭需要现做，等待得合理反而更安心。</p></aside>
+          </div>
+        </div>
       </section>
 
       <section class="notes">
