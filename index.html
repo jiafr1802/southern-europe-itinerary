@@ -590,7 +590,7 @@
         ["午间", "抵达、入住与午餐", false], ["14:00", "马德里王宫", true, "✓ 已购票"], ["16:00", "阿穆德纳主教座堂 → 圣米盖尔市场 → 马约尔广场 → 太阳门", false], ["19:00", "索菲亚王后国家艺术中心 · 看毕加索", true, "✓ 免费票已领取 · 至 20:30"]
       ]},
       { day: 2, date: "09.27", weekday: "周日", city: "madrid", cityName: "马德里", title: "普拉多 · 丽池公园 · 伯纳乌", summary: "艺术金三角与皇家马德里", center: [40.4140, -3.6921], zoom: 13, focus: "普拉多博物馆", note: "正式表安排：普拉多 10:00–12:00、伯纳乌 Tour 16:30，两项均已购票。", events: [
-        ["10:00", "普拉多博物馆", true, "✓ 携程已购票 · 至 12:00"], ["12:15", "丽池公园与水晶宫", false], ["14:00", "午餐 / 前往伯纳乌", false], ["16:30", "伯纳乌球场 Tour · 皇家马德里博物馆", true, "✓ 已购票"]
+        ["10:00", "普拉多博物馆", true, "✓ 携程已购票 · 至 12:00"], ["12:15", "丽池公园与水晶宫", false], ["14:00", "午餐 / 前往伯纳乌", false], ["16:30", "伯纳乌球场 Tour · 皇家马德里博物馆", true, "✓ 已购票"], ["夜间", "返回马德里民宿 · Calle Jerte 6", true, "✓ 已预订"]
       ]},
       { day: 3, date: "09.28", weekday: "周一", city: "seville", cityName: "马德里 → 塞维利亚", title: "AVE 南下 · 塞维利亚王宫", summary: "穆德哈尔宫殿、西班牙广场与日落", center: [37.3833, -5.9910], zoom: 14, focus: "塞维利亚王宫", note: "正式表安排：AVE 10:00–12:40，王宫 15:30；随后西班牙广场看日落，晚上可选弗拉门戈。", events: [
         ["10:00", "马德里 → 塞维利亚 AVE", true, "✓ 已出票 · 12:40 到达"], ["13:00", "午餐与酒店寄存行李", false], ["15:30", "塞维利亚王宫", true, "✓ 已购票"], ["18:30", "西班牙广场看日落", false], ["夜间", "弗拉门戈表演（可选）", false]
@@ -626,6 +626,7 @@
 
     const placesByDay = [
       [
+        { name: "马德里民宿 · Calle Jerte 6", coords: [40.4112024, -3.7151706], query: "Calle Jerte 6, 28005 Madrid, Spain", match: ["入住"] },
         { name: "马德里王宫", coords: [40.417955, -3.714312], query: "Palacio Real de Madrid", match: ["马德里王宫"] },
         { name: "阿穆德纳主教座堂", coords: [40.415587, -3.714558], query: "Catedral de la Almudena Madrid" },
         { name: "圣米盖尔市场", coords: [40.415406, -3.708924], query: "Mercado de San Miguel Madrid" },
@@ -634,6 +635,7 @@
         { name: "索菲亚王后国家艺术中心", coords: [40.408665, -3.694638], query: "Museo Reina Sofia Madrid", match: ["索菲亚王后国家艺术中心"] }
       ],
       [
+        { name: "马德里民宿 · Calle Jerte 6", coords: [40.4112024, -3.7151706], query: "Calle Jerte 6, 28005 Madrid, Spain", match: ["马德里民宿"] },
         { name: "普拉多博物馆", coords: [40.413782, -3.692127], query: "Museo del Prado Madrid" },
         { name: "丽池公园", coords: [40.415261, -3.684505], query: "El Retiro Park Madrid" },
         { name: "水晶宫", coords: [40.413626, -3.682047], query: "Palacio de Cristal Madrid" },
