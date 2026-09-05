@@ -252,6 +252,12 @@
     .snack-groups { display: grid; grid-template-columns: 1fr 1fr; }
     .snack-group + .snack-group { border-left: 1px solid rgba(255,255,255,.13); }
     .snack-label { padding: 14px 22px; color: #e5b44d; border-bottom: 1px solid rgba(255,255,255,.1); font: 600 12px "Noto Serif SC", serif; }
+    .market-stop { margin-top: 18px; border: 1px solid rgba(229,180,77,.42); background: rgba(229,180,77,.055); }
+    .market-stop .snacks-head { border-bottom-color: rgba(229,180,77,.25); }
+    .market-stop .snacks-head p { color: rgba(247,241,229,.68); }
+    .market-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .market-grid .restaurant:first-child { border-right: 1px solid rgba(255,255,255,.13); }
+    .market-grid .restaurant { border-bottom: 0; }
     .snack-plan { margin-top: 18px; padding: 17px 20px; display: grid; grid-template-columns: auto 1fr auto 1fr; gap: 12px; align-items: center; color: rgba(247,241,229,.72); border: 1px solid rgba(229,180,77,.35); background: rgba(229,180,77,.07); font-size: 11px; }
     .snack-plan b { color: #fff; font-weight: 600; }
     .snack-plan i { color: #e5b44d; font-style: normal; }
@@ -264,6 +270,27 @@
     .dish span, .food-warning p { color: rgba(247,241,229,.58); font-size: 10px; line-height: 1.6; }
     .food-warning { background: rgba(180,59,47,.12); border-color: rgba(180,59,47,.45); }
     .food-warning p { margin: 0; }
+    .driver-menu { margin-top: 44px; border-top: 1px solid rgba(255,255,255,.18); padding-top: 34px; }
+    .driver-menu-head { display: grid; grid-template-columns: .8fr 1.2fr; gap: 7vw; align-items: end; margin-bottom: 20px; }
+    .driver-menu-head .eyebrow { color: #e5b44d; }
+    .driver-menu-head h3 { margin: 0; font: 600 27px/1.25 "Noto Serif SC", serif; }
+    .driver-menu-head p { margin: 0; color: rgba(247,241,229,.62); font-size: 12px; line-height: 1.75; }
+    .piastri-menu { position: relative; overflow: hidden; display: grid; grid-template-columns: 240px 1fr; border: 1px solid rgba(229,180,77,.42); background: #f5efe2; color: var(--ink); }
+    .piastri-menu::after { content: "81"; position: absolute; right: -6px; bottom: -42px; color: rgba(180,59,47,.07); font: 700 180px/1 "Noto Serif SC", serif; pointer-events: none; }
+    .menu-cover { position: relative; z-index: 1; padding: 30px 26px; color: #fff; background: var(--red-dark); display: flex; flex-direction: column; justify-content: space-between; min-height: 320px; }
+    .menu-cover small { color: rgba(255,255,255,.65); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; }
+    .menu-cover h4 { margin: 12px 0 0; font: 600 28px/1.2 "Noto Serif SC", serif; }
+    .menu-cover .koala { display: block; margin-top: 14px; font-size: 29px; }
+    .menu-location { padding-top: 17px; border-top: 1px solid rgba(255,255,255,.25); font-size: 11px; line-height: 1.6; }
+    .menu-location b { display: block; margin-bottom: 3px; color: #e5b44d; font-weight: 600; }
+    .menu-courses { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; padding: 15px 28px; }
+    .menu-course { display: grid; grid-template-columns: 27px 1fr; gap: 10px; padding: 22px 16px 22px 0; border-bottom: 1px solid rgba(32,33,30,.14); }
+    .menu-course:nth-child(even) { padding-left: 22px; border-left: 1px solid rgba(32,33,30,.14); }
+    .menu-course:nth-last-child(-n+2) { border-bottom: 0; }
+    .course-number { color: var(--red); font: 600 12px "DM Sans", sans-serif; }
+    .menu-course small { display: block; margin-bottom: 5px; color: var(--red-dark); font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
+    .menu-course h5 { margin: 0 0 5px; font: 600 15px/1.4 "Noto Serif SC", serif; }
+    .menu-course p { margin: 0; color: #68665e; font-size: 10px; line-height: 1.6; }
 
     .notes { padding: 44px 4vw 54px; background: var(--paper-strong); }
     .notes-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: .8fr 2.2fr; gap: 7vw; }
@@ -315,10 +342,13 @@
       .mobile-tabs button.active { color: var(--ink); background: var(--paper-strong); }
       .notes-inner { grid-template-columns: 1fr; gap: 28px; }
       .food-head { grid-template-columns: 1fr; gap: 18px; }
+      .driver-menu-head { grid-template-columns: 1fr; gap: 12px; }
       .food-cities { grid-template-columns: 1fr; }
       .food-guide { grid-template-columns: 1fr; }
       .snack-groups { grid-template-columns: 1fr; }
       .snack-group + .snack-group { border-left: 0; border-top: 1px solid rgba(255,255,255,.13); }
+      .market-grid { grid-template-columns: 1fr; }
+      .market-grid .restaurant:first-child { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.13); }
     }
     @media (max-width: 620px) {
       .topbar { height: 58px; padding: 0 18px; }
@@ -339,6 +369,13 @@
       .notes { padding: 38px 20px 80px; }
       .note-grid { grid-template-columns: 1fr; gap: 21px; }
       .food { padding: 48px 20px 68px; }
+      .piastri-menu { grid-template-columns: 1fr; }
+      .menu-cover { min-height: 220px; }
+      .menu-cover h4 { font-size: 23px; }
+      .menu-courses { grid-template-columns: 1fr; padding: 10px 22px; }
+      .menu-course, .menu-course:nth-child(even) { padding: 18px 0; border-left: 0; border-bottom: 1px solid rgba(32,33,30,.14); }
+      .menu-course:nth-child(3) { border-bottom: 1px solid rgba(32,33,30,.14); }
+      .menu-course:last-child { border-bottom: 0; }
       .restaurant { grid-template-columns: 1fr; }
       .map-link { justify-self: start; }
       .dishes { grid-template-columns: 1fr 1fr; }
@@ -463,7 +500,23 @@
               </div>
             </div>
           </section>
-          <div class="snack-plan"><b>最省心吃法</b><span>中午 Plaza Mayor → La Campana 炸鱿鱼三明治</span><i>→</i><span>晚上 / 夜宵 San Ginés → churros + porras + chocolate</span></div>
+          <section class="market-stop" aria-labelledby="san-miguel-title">
+            <header class="snacks-head">
+              <h3 id="san-miguel-title">史东推荐 · 圣米盖尔市场与生蚝</h3>
+              <p>就在马约尔广场旁，最适合嵌进王宫老城 City Walk；市场整体偏游客区，适合少量多样地尝鲜。</p>
+            </header>
+            <div class="market-grid">
+              <div class="restaurant">
+                <div><small>老城顺路 · Plaza Mayor 步行 1–2 分钟</small><h4>Mercado de San Miguel</h4><p>地址：Plaza de San Miguel, s/n。建议路线：王宫 → Almudena 大教堂 → 市场吃东西 → Plaza Mayor → Sol。参考营业时间：周日至周四 10:00–24:00；周五、周六及节假日前夕至 01:00。</p></div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Mercado+de+San+Miguel+Madrid" target="_blank" rel="noopener">Google 地图 ↗</a>
+              </div>
+              <div class="restaurant">
+                <div><small>高概率同款候选 · 市场主入口附近</small><h4>Ostras Daniel Sorlut</h4><p>视频画面仅能确认市场，未能完全确认摊位；这里是市场内最明确的专业生蚝柜台。四款包括 Fine de Claire、Spéciale de Claire、Label Rouge 与招牌 Spéciale Daniel Sorlut，建议选 3–4 只不同品种比较；开蚝前先确认品种、数量与每只单价。</p></div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Ostras+Daniel+Sorlut+Mercado+de+San+Miguel+Madrid" target="_blank" rel="noopener">Google 地图 ↗</a>
+              </div>
+            </div>
+          </section>
+          <div class="snack-plan"><b>老城吃法</b><span>王宫 → Almudena → San Miguel 市场吃生蚝</span><i>→</i><span>Plaza Mayor 炸鱿鱼三明治 → 晚上 San Ginés</span></div>
           <div class="food-guide">
             <div class="dish-list">
               <h3>不只 Paella · 看到这些也值得点</h3>
@@ -476,6 +529,24 @@
             </div>
             <aside class="food-warning"><h3>避坑提示</h3><p>绕开 La Rambla 周边门口放巨大成品照片、十几种语言菜单、几分钟就上桌的店。好米饭需要现做，等待得合理反而更安心。</p></aside>
           </div>
+          <section class="driver-menu" aria-labelledby="piastri-menu-title">
+            <header class="driver-menu-head">
+              <div><p class="eyebrow">Italy · Driver's table</p><h3 id="piastri-menu-title">喜欢的 F1 车手菜单</h3></div>
+              <p>把意大利段想吃的菜做成车手主题菜单。第一份从蒙扎开始：奥斯卡·皮亚斯特里的四道式组合，地点确认后再补进路线。</p>
+            </header>
+            <article class="piastri-menu">
+              <div class="menu-cover">
+                <div><small>Monza menu · No. 81</small><h4>奥斯卡·皮亚斯特里<br>蒙扎菜单</h4><span class="koala" aria-hidden="true">🐨</span></div>
+                <div class="menu-location"><b>地点待添加</b>意大利行程餐厅 / 城市稍后确认</div>
+              </div>
+              <div class="menu-courses">
+                <div class="menu-course"><span class="course-number">01</span><div><small>Antipasto</small><h5>Prosciutto crudo e mozzarella di bufala</h5><p>意大利风干火腿配水牛奶马苏里拉奶酪 · 经典前菜</p></div></div>
+                <div class="menu-course"><span class="course-number">02</span><div><small>Primo</small><h5>Rigatoni al ragù</h5><p>肉酱通心粉 · 浓郁慢炖意大利肉酱</p></div></div>
+                <div class="menu-course"><span class="course-number">03</span><div><small>Dolce</small><h5>Tiramisù</h5><p>提拉米苏 · 咖啡、可可与马斯卡彭奶酪</p></div></div>
+                <div class="menu-course"><span class="course-number">04</span><div><small>Digestivo</small><h5>Sorbetto al limone</h5><p>柠檬冰沙 · 可选择含酒精或无酒精版本</p></div></div>
+              </div>
+            </article>
+          </section>
         </div>
       </section>
 
@@ -503,7 +574,7 @@
   <script>
     const itinerary = [
       { day: 1, date: "09.26", weekday: "周六", city: "madrid", cityName: "马德里", title: "王室旧城 · 索菲亚艺术中心", summary: "从马德里王宫到毕加索《格尔尼卡》", center: [40.4179, -3.7143], zoom: 14, focus: "马德里王宫", note: "正式表安排：王宫 14:00，索菲亚艺术中心 19:00–20:30，两项均已购票。", events: [
-        ["午间", "抵达、入住与午餐", false], ["14:00", "马德里王宫", true, "✓ 已购票"], ["16:00", "阿穆德纳主教座堂 → 马约尔广场 → 太阳门", false], ["19:00", "索菲亚王后国家艺术中心 · 看毕加索", true, "✓ 免费票已领取 · 至 20:30"]
+        ["午间", "抵达、入住与午餐", false], ["14:00", "马德里王宫", true, "✓ 已购票"], ["16:00", "阿穆德纳主教座堂 → 圣米盖尔市场 → 马约尔广场 → 太阳门", false], ["19:00", "索菲亚王后国家艺术中心 · 看毕加索", true, "✓ 免费票已领取 · 至 20:30"]
       ]},
       { day: 2, date: "09.27", weekday: "周日", city: "madrid", cityName: "马德里", title: "普拉多 · 丽池公园 · 伯纳乌", summary: "艺术金三角与皇家马德里", center: [40.4140, -3.6921], zoom: 13, focus: "普拉多博物馆", note: "正式表安排：普拉多 10:00–12:00、伯纳乌 Tour 16:30，两项均已购票。", events: [
         ["10:00", "普拉多博物馆", true, "✓ 携程已购票 · 至 12:00"], ["12:15", "丽池公园与水晶宫", false], ["14:00", "午餐 / 前往伯纳乌", false], ["16:30", "伯纳乌球场 Tour · 皇家马德里博物馆", true, "✓ 已购票"]
