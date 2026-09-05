@@ -599,13 +599,13 @@
         ["上午", "Hotel Alcázar 退房 / 寄存行李", true, "✓ 12:00 前"], ["11:15", "塞维利亚大教堂与吉拉达塔", true, "✓ 已购票"], ["13:00", "午餐 / 都市阳伞（可选）", false], ["15:00", "塞维利亚 → 巴塞罗那高铁", true, "✓ 已出票 · 约 22:00 到达"], ["22:00", "入住巴塞罗那酒店", true, "✓ 已预订 · 09.29–10.02"]
       ]},
       { day: 5, date: "09.30", weekday: "周三", city: "barcelona", cityName: "巴塞罗那", title: "高迪建筑 · 圣家堂 · 焦糖山", summary: "古埃尔公园与圣家堂的高迪一天", center: [41.4036, 2.1744], zoom: 13, focus: "圣家堂", note: "正式表安排：维森斯之家、古埃尔公园可二选一；圣家堂 15:00 已购票，傍晚去焦糖山。", events: [
-        ["09:30", "维森斯之家 / 古埃尔公园（二选一）", false], ["12:30", "午餐与前往圣家堂", false], ["15:00", "圣家堂", true, "✓ 已购票"], ["18:00", "焦糖山俯瞰城市与日落", false]
+        ["09:30", "维森斯之家 / 古埃尔公园（二选一）", false], ["12:30", "午餐与前往圣家堂", false], ["15:00", "圣家堂", true, "✓ 已购票"], ["18:00", "焦糖山俯瞰城市与日落", false], ["夜间", "返回巴塞罗那酒店 · Carrer de Bertran 9–15", true, "✓ 已预订"]
       ]},
       { day: 6, date: "10.01", weekday: "周四", city: "barcelona", cityName: "巴塞罗那", title: "巴特罗之家 · 城市漫步", summary: "从格拉西亚大道一路走到海边", center: [41.3917, 2.1649], zoom: 14, focus: "巴特罗之家", note: "正式表安排：巴特罗之家 10:30，随后米拉之家；下午经加泰罗尼亚广场、哥特区到巴塞罗内塔海滩。", events: [
-        ["10:30", "巴特罗之家", true, "✓ 已购票"], ["12:00", "米拉之家", false], ["14:30", "加泰罗尼亚广场 → 哥特区", false], ["16:30", "亲吻墙与巴塞罗那主教堂", false], ["18:00", "巴塞罗内塔海滩", false]
+        ["10:30", "巴特罗之家", true, "✓ 已购票"], ["12:00", "米拉之家", false], ["14:30", "加泰罗尼亚广场 → 哥特区", false], ["16:30", "亲吻墙与巴塞罗那主教堂", false], ["18:00", "巴塞罗内塔海滩", false], ["夜间", "返回巴塞罗那酒店 · Carrer de Bertran 9–15", true, "✓ 已预订"]
       ]},
       { day: 7, date: "10.02", weekday: "周五", city: "rome", cityName: "巴塞罗那 → 罗马", title: "飞往罗马 · 历史中心", summary: "轻松串联罗马经典广场与喷泉", center: [41.9009, 12.4833], zoom: 14, focus: "特雷维喷泉", note: "正式表安排：航班 10:00–11:50；抵达后步行游览西班牙广场、许愿池、威尼斯广场、万神殿与纳沃纳广场。", events: [
-        ["早晨", "打扫民宿并退房", false], ["10:00", "巴塞罗那 → 罗马航班", true, "✓ 已出票 · 11:50 到达"], ["下午", "西班牙广场 → 特雷维喷泉 → 威尼斯广场", false], ["傍晚", "万神殿 → 纳沃纳广场", false]
+        ["早晨", "巴塞罗那酒店退房并前往机场", true, "Carrer de Bertran 9–15"], ["10:00", "巴塞罗那 → 罗马航班", true, "✓ 已出票 · 11:50 到达"], ["下午", "西班牙广场 → 特雷维喷泉 → 威尼斯广场", false], ["傍晚", "万神殿 → 纳沃纳广场", false]
       ]},
       { day: 8, date: "10.03", weekday: "周六", city: "rome", cityName: "罗马 / 梵蒂冈", title: "梵蒂冈 · 古罗马遗迹", summary: "博物馆之后前往斗兽场片区", center: [41.9065, 12.4536], zoom: 14, focus: "梵蒂冈博物馆", note: "正式表安排：梵蒂冈博物馆已购票，顺游西斯廷教堂；下午安排斗兽场、帕拉蒂尼山和古罗马广场。", events: [
         ["上午", "梵蒂冈博物馆", true, "✓ 已购票"], ["上午", "西斯廷教堂", false], ["下午", "斗兽场（竞技场 + 地宫 + 顶层）", false, "需另抢票"], ["傍晚", "帕拉蒂尼山 → 古罗马广场 → 真理之口", false]
@@ -651,15 +651,18 @@
       [
         { name: "Hotel Alcázar", coords: [37.3833721, -5.9868724], query: "Hotel Alcazar Av. de Menendez Pelayo 10 Sevilla", match: ["Hotel Alcázar"] },
         { name: "塞维利亚大教堂", coords: [37.385825, -5.993107], query: "Seville Cathedral", match: ["塞维利亚大教堂", "吉拉达塔"] },
-        { name: "都市阳伞", coords: [37.393306, -5.991772], query: "Metropol Parasol Seville" }
+        { name: "都市阳伞", coords: [37.393306, -5.991772], query: "Metropol Parasol Seville" },
+        { name: "巴塞罗那酒店 · Carrer de Bertran 9–15", coords: [41.4050044, 2.140611], query: "Carrer de Bertran 9-15, 08023 Barcelona, Spain", match: ["入住巴塞罗那酒店"] }
       ],
       [
+        { name: "巴塞罗那酒店 · Carrer de Bertran 9–15", coords: [41.4050044, 2.140611], query: "Carrer de Bertran 9-15, 08023 Barcelona, Spain", match: ["巴塞罗那酒店"] },
         { name: "圣家堂", coords: [41.403630, 2.174356], query: "Sagrada Familia Barcelona" },
         { name: "维森斯之家", coords: [41.403497, 2.150604], query: "Casa Vicens Barcelona" },
         { name: "古埃尔公园", coords: [41.414495, 2.152694], query: "Park Guell Barcelona" },
         { name: "焦糖山", coords: [41.419516, 2.161927], query: "Bunkers del Carmel Barcelona" }
       ],
       [
+        { name: "巴塞罗那酒店 · Carrer de Bertran 9–15", coords: [41.4050044, 2.140611], query: "Carrer de Bertran 9-15, 08023 Barcelona, Spain", match: ["巴塞罗那酒店"] },
         { name: "巴特罗之家", coords: [41.391640, 2.164991], query: "Casa Batllo Barcelona" },
         { name: "米拉之家", coords: [41.395380, 2.161961], query: "Casa Mila Barcelona" },
         { name: "加泰罗尼亚广场", coords: [41.387016, 2.170047], query: "Placa de Catalunya Barcelona" },
@@ -669,6 +672,7 @@
         { name: "巴塞罗内塔海滩", coords: [41.378400, 2.192500], query: "Barceloneta Beach Barcelona" }
       ],
       [
+        { name: "巴塞罗那酒店 · Carrer de Bertran 9–15", coords: [41.4050044, 2.140611], query: "Carrer de Bertran 9-15, 08023 Barcelona, Spain", match: ["巴塞罗那酒店"] },
         { name: "特雷维喷泉", coords: [41.900930, 12.483310], query: "Trevi Fountain Rome", match: ["特雷维喷泉", "许愿池"] },
         { name: "西班牙广场", coords: [41.905990, 12.482780], query: "Spanish Steps Rome" },
         { name: "威尼斯广场", coords: [41.895750, 12.482250], query: "Piazza Venezia Rome" },
