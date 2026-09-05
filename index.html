@@ -229,6 +229,9 @@
     .leaflet-control-attribution { font-size: 9px; }
     .leaflet-control-zoom { border: 0 !important; box-shadow: var(--shadow) !important; }
     .leaflet-control-zoom a { border: 0 !important; color: var(--ink) !important; }
+    .leaflet-control-overview { margin-top: 8px !important; border: 0 !important; box-shadow: var(--shadow); }
+    .leaflet-control-overview button { width: 30px; height: 30px; padding: 0; display: grid; place-items: center; color: var(--ink); border: 0; background: var(--paper-strong); cursor: pointer; font-size: 17px; line-height: 1; }
+    .leaflet-control-overview button:hover, .leaflet-control-overview button:focus-visible { color: #fff; background: var(--red); outline: 0; }
     .day-marker { background: transparent; border: 0; }
     .marker-dot { width: 30px; height: 30px; display: grid; place-items: center; border: 2px solid #fff; border-radius: 50%; color: #fff; background: var(--blue); box-shadow: 0 4px 16px rgba(28,33,31,.35); font: 600 11px "DM Sans", sans-serif; }
     .marker-dot.active { background: var(--red); transform: scale(1.18); }
@@ -737,6 +740,29 @@
       [41.9028, 12.4964], [43.7696, 11.2558], [45.4642, 9.1900]
     ];
     L.polyline(routeCoords, { color: "#b43b2f", weight: 3, opacity: .75, dashArray: "4 8" }).addTo(map);
+
+    const routeBounds = L.latLngBounds(routeCoords);
+    const overviewCenter = routeBounds.getCenter();
+    const overviewZoom = 4;
+    const OverviewControl = L.Control.extend({
+      options: { position: "topright" },
+      onAdd() {
+        const container = L.DomUtil.create("div", "leaflet-bar leaflet-control-overview");
+        const button = L.DomUtil.create("button", "", container);
+        button.type = "button";
+        button.title = "返回南欧全景";
+        button.setAttribute("aria-label", "返回南欧全景");
+        button.textContent = "⌂";
+        L.DomEvent.disableClickPropagation(container);
+        L.DomEvent.on(button, "click", () => {
+          map.stop();
+          map.invalidateSize({ animate: false });
+          map.setView(overviewCenter, overviewZoom, { animate: false });
+        });
+        return container;
+      }
+    });
+    map.addControl(new OverviewControl());
 
     const markers = itinerary.map((item, index) => L.marker(item.center, {
       icon: L.divIcon({ className: "day-marker", html: `<span class="marker-dot ${index === 0 ? "active" : ""}">${item.day}</span>`, iconSize: [30, 30], iconAnchor: [15, 15] })
