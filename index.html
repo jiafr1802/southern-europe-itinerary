@@ -614,13 +614,13 @@
         ["上午", "博尔盖塞公园 / 美术馆", false, "美术馆票待抢"], ["下午", "圣彼得大教堂", false, "免费 · 不登顶"], ["傍晚", "圣天使堡看日落", false]
       ]},
       { day: 10, date: "10.05", weekday: "周一", city: "florence", cityName: "罗马 → 佛罗伦萨", title: "高铁入托斯卡纳 · 百花大教堂", summary: "红瓦穹顶与米开朗基罗广场日落", center: [43.7731, 11.2560], zoom: 15, focus: "圣母百花大教堂", note: "正式表安排：09:45 从罗马 Termini 出发，11:27 抵达；参观百花大教堂建筑群，傍晚去米开朗基罗广场。", events: [
-        ["09:45", "罗马 Termini → 佛罗伦萨高铁", true, "✓ 已出票 · 11:27 到达"], ["午后", "圣母百花大教堂建筑群", true, "✓ 联票已购"], ["傍晚", "米开朗基罗广场看日落", false], ["夜间", "入住佛罗伦萨", true, "✓ 住宿已预订"]
+        ["09:45", "罗马 Termini → 佛罗伦萨高铁", true, "✓ 已出票 · 11:27 到达"], ["午后", "圣母百花大教堂建筑群", true, "✓ 联票已购"], ["傍晚", "米开朗基罗广场看日落", false], ["夜间", "入住 Domus Plaza · Via dei Bonizzi 2", true, "14:00–20:00 入住 · ✓ 已预订"]
       ]},
       { day: 11, date: "10.06", weekday: "周二", city: "florence", cityName: "佛罗伦萨 → 米兰", title: "乌菲兹美术馆 · 前往米兰", summary: "上午留给文艺复兴，下午乘高铁北上", center: [43.7687, 11.2550], zoom: 15, focus: "乌菲兹美术馆", note: "正式表安排：上午乌菲兹美术馆（或学院美术馆），下午乘高铁去米兰，住宿靠近机场。", events: [
-        ["上午", "乌菲兹美术馆 / 学院美术馆", false, "门票待确认"], ["下午", "佛罗伦萨 → 米兰高铁", false, "待购票"], ["夜间", "入住米兰机场附近酒店", true, "✓ 住宿已预订"]
+        ["早晨", "Domus Plaza 退房并寄存行李", true, "08:00–11:00 退房"], ["上午", "乌菲兹美术馆 / 学院美术馆", false, "门票待确认"], ["下午", "佛罗伦萨 → 米兰高铁", false, "待购票"], ["夜间", "入住 LA CASETTA Malpensa Guesthouse · Via Bellaria 49", true, "15:00–23:00 入住 · ✓ 已预订"]
       ]},
       { day: 12, date: "10.07", weekday: "周三", city: "milan", cityName: "米兰 → 北京", title: "返程日 · 飞回北京", summary: "从米兰机场启程回家", center: [45.6301, 8.7255], zoom: 11, focus: "米兰马尔彭萨机场", note: "正式表只注明早上飞机回北京，请以最终航班票面时间安排退房与机场交通。", events: [
-        ["早晨", "酒店退房并前往机场", false], ["票面时间", "米兰 → 北京航班", false, "请核对最终机票"]
+        ["早晨", "LA CASETTA Malpensa Guesthouse 退房并前往机场", true, "10:00 前退房"], ["票面时间", "米兰 → 北京航班", false, "请核对最终机票"]
       ]}
     ];
 
@@ -693,16 +693,20 @@
         { name: "圣天使堡", coords: [41.903060, 12.466280], query: "Castel Sant'Angelo Rome" }
       ],
       [
+        { name: "Domus Plaza · Via dei Bonizzi 2", coords: [43.7722601, 11.2574714], query: "Domus Plaza, Via dei Bonizzi 2, 50122 Firenze, Italy", match: ["Domus Plaza"] },
         { name: "圣母百花大教堂", coords: [43.773100, 11.256000], query: "Cathedral of Santa Maria del Fiore Florence", match: ["圣母百花大教堂"] },
         { name: "罗马 Termini 车站", coords: [41.901000, 12.501800], query: "Roma Termini", match: ["罗马 Termini"] },
         { name: "佛罗伦萨 SMN 车站", coords: [43.776200, 11.248000], query: "Firenze Santa Maria Novella station", match: ["佛罗伦萨高铁"] },
         { name: "米开朗基罗广场", coords: [43.762900, 11.265000], query: "Piazzale Michelangelo Florence" }
       ],
       [
+        { name: "Domus Plaza · Via dei Bonizzi 2", coords: [43.7722601, 11.2574714], query: "Domus Plaza, Via dei Bonizzi 2, 50122 Firenze, Italy", match: ["Domus Plaza"] },
         { name: "乌菲兹美术馆", coords: [43.767800, 11.255300], query: "Uffizi Gallery Florence" },
-        { name: "学院美术馆", coords: [43.776800, 11.258800], query: "Accademia Gallery Florence" }
+        { name: "学院美术馆", coords: [43.776800, 11.258800], query: "Accademia Gallery Florence" },
+        { name: "LA CASETTA Malpensa Guesthouse · Via Bellaria 49", coords: [45.6398101, 8.7058437], query: "LA CASETTA Malpensa Guesthouse, Via Bellaria 49, 21019 Case Nuove, Italy", match: ["LA CASETTA Malpensa Guesthouse"] }
       ],
       [
+        { name: "LA CASETTA Malpensa Guesthouse · Via Bellaria 49", coords: [45.6398101, 8.7058437], query: "LA CASETTA Malpensa Guesthouse, Via Bellaria 49, 21019 Case Nuove, Italy", match: ["LA CASETTA Malpensa Guesthouse"] },
         { name: "米兰马尔彭萨机场", coords: [45.630100, 8.725500], query: "Milan Malpensa Airport" }
       ]
     ];
