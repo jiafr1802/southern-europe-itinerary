@@ -592,11 +592,11 @@
       { day: 2, date: "09.27", weekday: "周日", city: "madrid", cityName: "马德里", title: "普拉多 · 丽池公园 · 伯纳乌", summary: "艺术金三角与皇家马德里", center: [40.4140, -3.6921], zoom: 13, focus: "普拉多博物馆", note: "正式表安排：普拉多 10:00–12:00、伯纳乌 Tour 16:30，两项均已购票。", events: [
         ["10:00", "普拉多博物馆", true, "✓ 携程已购票 · 至 12:00"], ["12:15", "丽池公园与水晶宫", false], ["14:00", "午餐 / 前往伯纳乌", false], ["16:30", "伯纳乌球场 Tour · 皇家马德里博物馆", true, "✓ 已购票"], ["夜间", "返回马德里民宿 · Calle Jerte 6", true, "✓ 已预订"]
       ]},
-      { day: 3, date: "09.28", weekday: "周一", city: "seville", cityName: "马德里 → 塞维利亚", title: "AVE 南下 · 塞维利亚王宫", summary: "穆德哈尔宫殿、西班牙广场与日落", center: [37.3833, -5.9910], zoom: 14, focus: "塞维利亚王宫", note: "正式表安排：AVE 10:00–12:40，王宫 15:30；随后西班牙广场看日落，晚上可选弗拉门戈。", events: [
-        ["10:00", "马德里 → 塞维利亚 AVE", true, "✓ 已出票 · 12:40 到达"], ["13:00", "午餐与酒店寄存行李", false], ["15:30", "塞维利亚王宫", true, "✓ 已购票"], ["18:30", "西班牙广场看日落", false], ["夜间", "弗拉门戈表演（可选）", false]
+      { day: 3, date: "09.28", weekday: "周一", city: "seville", cityName: "马德里 → 塞维利亚", title: "AVE 南下 · 塞维利亚王宫", summary: "穆德哈尔宫殿、西班牙广场与日落", center: [37.3833, -5.9910], zoom: 14, focus: "塞维利亚王宫", note: "AVE 02100：Madrid-Puerta de Atocha 10:00 出发，Sevilla-Santa Justa 12:40 到达；王宫 15:30，随后西班牙广场看日落。", events: [
+        ["10:00", "Madrid-Puerta de Atocha → Sevilla-Santa Justa", true, "✓ AVE 02100 · 12:40 到达 · 2小时40分"], ["13:10", "Hotel Alcázar · 寄存行李（15:00 后入住）", true, "✓ 已预订 · 1晚"], ["15:30", "塞维利亚王宫", true, "✓ 已购票"], ["18:30", "西班牙广场看日落", false], ["夜间", "入住 Hotel Alcázar / 弗拉门戈表演（可选）", false]
       ]},
       { day: 4, date: "09.29", weekday: "周二", city: "seville", cityName: "塞维利亚 → 巴塞罗那", title: "大教堂 · 高铁至巴塞罗那", summary: "吉拉达塔与傍晚跨城", center: [37.3861, -5.9926], zoom: 14, focus: "塞维利亚大教堂", note: "正式表安排：大教堂 11:15，高铁约 15:00 出发、22:00 抵达巴塞罗那。", events: [
-        ["11:15", "塞维利亚大教堂与吉拉达塔", true, "✓ 已购票"], ["13:00", "午餐 / 都市阳伞（可选）", false], ["15:00", "塞维利亚 → 巴塞罗那高铁", true, "✓ 已出票 · 约 22:00 到达"], ["22:00", "入住巴塞罗那酒店", true, "✓ 已预订 · 09.29–10.02"]
+        ["上午", "Hotel Alcázar 退房 / 寄存行李", true, "✓ 12:00 前"], ["11:15", "塞维利亚大教堂与吉拉达塔", true, "✓ 已购票"], ["13:00", "午餐 / 都市阳伞（可选）", false], ["15:00", "塞维利亚 → 巴塞罗那高铁", true, "✓ 已出票 · 约 22:00 到达"], ["22:00", "入住巴塞罗那酒店", true, "✓ 已预订 · 09.29–10.02"]
       ]},
       { day: 5, date: "09.30", weekday: "周三", city: "barcelona", cityName: "巴塞罗那", title: "高迪建筑 · 圣家堂 · 焦糖山", summary: "古埃尔公园与圣家堂的高迪一天", center: [41.4036, 2.1744], zoom: 13, focus: "圣家堂", note: "正式表安排：维森斯之家、古埃尔公园可二选一；圣家堂 15:00 已购票，傍晚去焦糖山。", events: [
         ["09:30", "维森斯之家 / 古埃尔公园（二选一）", false], ["12:30", "午餐与前往圣家堂", false], ["15:00", "圣家堂", true, "✓ 已购票"], ["18:00", "焦糖山俯瞰城市与日落", false]
@@ -642,10 +642,14 @@
         { name: "伯纳乌球场", coords: [40.453054, -3.688344], query: "Santiago Bernabeu Stadium Madrid", match: ["伯纳乌球场"] }
       ],
       [
+        { name: "Madrid-Puerta de Atocha", coords: [40.4064905, -3.6909091], query: "Madrid Puerta de Atocha station" },
+        { name: "Sevilla-Santa Justa", coords: [37.3923848, -5.9749377], query: "Sevilla Santa Justa station" },
+        { name: "Hotel Alcázar", coords: [37.3833721, -5.9868724], query: "Hotel Alcazar Av. de Menendez Pelayo 10 Sevilla", match: ["Hotel Alcázar"] },
         { name: "塞维利亚王宫", coords: [37.383059, -5.990225], query: "Royal Alcazar of Seville" },
         { name: "西班牙广场", coords: [37.377196, -5.986893], query: "Plaza de Espana Seville" }
       ],
       [
+        { name: "Hotel Alcázar", coords: [37.3833721, -5.9868724], query: "Hotel Alcazar Av. de Menendez Pelayo 10 Sevilla", match: ["Hotel Alcázar"] },
         { name: "塞维利亚大教堂", coords: [37.385825, -5.993107], query: "Seville Cathedral", match: ["塞维利亚大教堂", "吉拉达塔"] },
         { name: "都市阳伞", coords: [37.393306, -5.991772], query: "Metropol Parasol Seville" }
       ],
