@@ -192,6 +192,9 @@
     .event i { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
     .event.confirmed i { background: var(--red); box-shadow: 0 0 0 3px rgba(180, 59, 47, .12); }
     .event strong { font-weight: 600; }
+    .event-place-links { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+    .event-place-links a { padding: 3px 6px; color: var(--blue); border: 1px solid rgba(36,90,115,.3); background: rgba(255,255,255,.42); font-size: 9px; font-weight: 600; line-height: 1.25; text-decoration: none; }
+    .event-place-links a:hover { color: #fff; border-color: var(--blue); background: var(--blue); }
     .tag { display: inline-block; margin-left: 7px; color: var(--red-dark); font-size: 9px; font-weight: 600; vertical-align: 1px; }
     .chevron { align-self: center; width: 24px; height: 24px; display: grid; place-items: center; border: 1px solid var(--line); font-size: 15px; }
 
@@ -218,13 +221,21 @@
     .map-caption small { color: var(--red); font-size: 10px; font-weight: 600; }
     .map-caption h3 { margin: 4px 0 4px; font: 600 17px "Noto Serif SC", serif; }
     .map-caption p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
-    .map-caption a { display: inline-block; margin-top: 10px; color: var(--blue); font-size: 11px; font-weight: 600; text-decoration: none; pointer-events: auto; }
+    .map-caption a { color: var(--blue); font-size: 11px; font-weight: 600; text-decoration: none; pointer-events: auto; }
+    .map-primary-link { display: inline-block; margin-top: 10px; }
+    .map-place-links { display: flex; flex-wrap: wrap; gap: 5px; max-height: 86px; margin-top: 11px; padding-top: 10px; overflow-y: auto; border-top: 1px solid var(--line); pointer-events: auto; }
+    .map-place-links a { padding: 4px 6px; border: 1px solid var(--line); background: rgba(255,255,255,.55); font-size: 9px; }
+    .map-place-links a:hover { color: #fff; border-color: var(--blue); background: var(--blue); }
     .leaflet-control-attribution { font-size: 9px; }
     .leaflet-control-zoom { border: 0 !important; box-shadow: var(--shadow) !important; }
     .leaflet-control-zoom a { border: 0 !important; color: var(--ink) !important; }
     .day-marker { background: transparent; border: 0; }
     .marker-dot { width: 30px; height: 30px; display: grid; place-items: center; border: 2px solid #fff; border-radius: 50%; color: #fff; background: var(--blue); box-shadow: 0 4px 16px rgba(28,33,31,.35); font: 600 11px "DM Sans", sans-serif; }
     .marker-dot.active { background: var(--red); transform: scale(1.18); }
+    .place-marker { background: transparent; border: 0; }
+    .place-marker-dot { width: 22px; height: 22px; display: grid; place-items: center; border: 2px solid #fff; border-radius: 50%; color: #fff; background: var(--blue); box-shadow: 0 3px 10px rgba(28,33,31,.32); font: 600 9px "DM Sans", sans-serif; }
+    .place-marker-dot.active { background: var(--red); transform: scale(1.14); }
+    .leaflet-tooltip.place-tooltip { padding: 5px 7px; color: var(--ink); border: 1px solid var(--line); border-radius: 0; background: var(--paper-strong); box-shadow: 0 6px 18px rgba(32,33,30,.15); font: 600 10px "DM Sans", "PingFang SC", sans-serif; }
 
     .food { padding: 68px 4vw 72px; background: #20211e; color: #f7f1e5; }
     .food-inner { max-width: 1180px; margin: 0 auto; }
@@ -431,7 +442,7 @@
         </div>
         <aside class="map-panel" aria-label="行程地图">
           <div id="map"></div>
-          <div class="map-top"><div class="map-label"><small>Journey map</small><strong>南欧路线总览</strong></div></div>
+          <div class="map-top"><div class="map-label"><small>Journey map · 大号天数 / 小号地点</small><strong>南欧路线总览</strong></div></div>
           <div class="map-caption" id="mapCaption"></div>
         </aside>
       </section>
@@ -610,6 +621,81 @@
       ]}
     ];
 
+    const placesByDay = [
+      [
+        { name: "马德里王宫", coords: [40.417955, -3.714312], query: "Palacio Real de Madrid", match: ["马德里王宫"] },
+        { name: "阿穆德纳主教座堂", coords: [40.415587, -3.714558], query: "Catedral de la Almudena Madrid" },
+        { name: "圣米盖尔市场", coords: [40.415406, -3.708924], query: "Mercado de San Miguel Madrid" },
+        { name: "马约尔广场", coords: [40.415363, -3.707398], query: "Plaza Mayor Madrid" },
+        { name: "太阳门广场", coords: [40.416947, -3.703528], query: "Puerta del Sol Madrid", match: ["太阳门"] },
+        { name: "索菲亚王后国家艺术中心", coords: [40.408665, -3.694638], query: "Museo Reina Sofia Madrid", match: ["索菲亚王后国家艺术中心"] }
+      ],
+      [
+        { name: "普拉多博物馆", coords: [40.413782, -3.692127], query: "Museo del Prado Madrid" },
+        { name: "丽池公园", coords: [40.415261, -3.684505], query: "El Retiro Park Madrid" },
+        { name: "水晶宫", coords: [40.413626, -3.682047], query: "Palacio de Cristal Madrid" },
+        { name: "伯纳乌球场", coords: [40.453054, -3.688344], query: "Santiago Bernabeu Stadium Madrid", match: ["伯纳乌球场"] }
+      ],
+      [
+        { name: "塞维利亚王宫", coords: [37.383059, -5.990225], query: "Royal Alcazar of Seville" },
+        { name: "西班牙广场", coords: [37.377196, -5.986893], query: "Plaza de Espana Seville" }
+      ],
+      [
+        { name: "塞维利亚大教堂", coords: [37.385825, -5.993107], query: "Seville Cathedral", match: ["塞维利亚大教堂", "吉拉达塔"] },
+        { name: "都市阳伞", coords: [37.393306, -5.991772], query: "Metropol Parasol Seville" }
+      ],
+      [
+        { name: "圣家堂", coords: [41.403630, 2.174356], query: "Sagrada Familia Barcelona" },
+        { name: "维森斯之家", coords: [41.403497, 2.150604], query: "Casa Vicens Barcelona" },
+        { name: "古埃尔公园", coords: [41.414495, 2.152694], query: "Park Guell Barcelona" },
+        { name: "焦糖山", coords: [41.419516, 2.161927], query: "Bunkers del Carmel Barcelona" }
+      ],
+      [
+        { name: "巴特罗之家", coords: [41.391640, 2.164991], query: "Casa Batllo Barcelona" },
+        { name: "米拉之家", coords: [41.395380, 2.161961], query: "Casa Mila Barcelona" },
+        { name: "加泰罗尼亚广场", coords: [41.387016, 2.170047], query: "Placa de Catalunya Barcelona" },
+        { name: "哥特区", coords: [41.383970, 2.176200], query: "Gothic Quarter Barcelona" },
+        { name: "亲吻墙", coords: [41.383770, 2.176120], query: "The World Begins With Every Kiss Barcelona" },
+        { name: "巴塞罗那主教堂", coords: [41.383962, 2.176199], query: "Barcelona Cathedral" },
+        { name: "巴塞罗内塔海滩", coords: [41.378400, 2.192500], query: "Barceloneta Beach Barcelona" }
+      ],
+      [
+        { name: "特雷维喷泉", coords: [41.900930, 12.483310], query: "Trevi Fountain Rome", match: ["特雷维喷泉", "许愿池"] },
+        { name: "西班牙广场", coords: [41.905990, 12.482780], query: "Spanish Steps Rome" },
+        { name: "威尼斯广场", coords: [41.895750, 12.482250], query: "Piazza Venezia Rome" },
+        { name: "万神殿", coords: [41.898610, 12.476870], query: "Pantheon Rome" },
+        { name: "纳沃纳广场", coords: [41.899160, 12.473070], query: "Piazza Navona Rome" }
+      ],
+      [
+        { name: "梵蒂冈博物馆", coords: [41.906490, 12.453640], query: "Vatican Museums" },
+        { name: "西斯廷教堂", coords: [41.902950, 12.454480], query: "Sistine Chapel Vatican City" },
+        { name: "斗兽场", coords: [41.890210, 12.492230], query: "Colosseum Rome" },
+        { name: "帕拉蒂尼山", coords: [41.889380, 12.487450], query: "Palatine Hill Rome" },
+        { name: "古罗马广场", coords: [41.892460, 12.485330], query: "Roman Forum Rome" },
+        { name: "真理之口", coords: [41.888240, 12.481460], query: "Mouth of Truth Rome" }
+      ],
+      [
+        { name: "圣彼得大教堂", coords: [41.902170, 12.453940], query: "St Peter's Basilica Vatican City" },
+        { name: "博尔盖塞公园与美术馆", coords: [41.914240, 12.492260], query: "Borghese Gallery and Museum Rome", match: ["博尔盖塞公园", "美术馆"] },
+        { name: "圣天使堡", coords: [41.903060, 12.466280], query: "Castel Sant'Angelo Rome" }
+      ],
+      [
+        { name: "圣母百花大教堂", coords: [43.773100, 11.256000], query: "Cathedral of Santa Maria del Fiore Florence", match: ["圣母百花大教堂"] },
+        { name: "罗马 Termini 车站", coords: [41.901000, 12.501800], query: "Roma Termini", match: ["罗马 Termini"] },
+        { name: "佛罗伦萨 SMN 车站", coords: [43.776200, 11.248000], query: "Firenze Santa Maria Novella station", match: ["佛罗伦萨高铁"] },
+        { name: "米开朗基罗广场", coords: [43.762900, 11.265000], query: "Piazzale Michelangelo Florence" }
+      ],
+      [
+        { name: "乌菲兹美术馆", coords: [43.767800, 11.255300], query: "Uffizi Gallery Florence" },
+        { name: "学院美术馆", coords: [43.776800, 11.258800], query: "Accademia Gallery Florence" }
+      ],
+      [
+        { name: "米兰马尔彭萨机场", coords: [45.630100, 8.725500], query: "Milan Malpensa Airport" }
+      ]
+    ];
+
+    itinerary.forEach((item, index) => { item.places = placesByDay[index]; });
+
     const daysRoot = document.querySelector("#days");
     const mapCaption = document.querySelector("#mapCaption");
     let activeDay = 0;
@@ -622,15 +708,19 @@
       card.tabIndex = 0;
       card.setAttribute("role", "button");
       card.setAttribute("aria-label", `第 ${item.day} 天，${item.title}`);
-      const events = item.events.map(event => `
+      const events = item.events.map(event => {
+        const eventPlaces = item.places.filter(place => (place.match || [place.name]).some(term => event[1].includes(term)));
+        const placeLinks = eventPlaces.length ? `<span class="event-place-links">${eventPlaces.map(place => `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.query)}" target="_blank" rel="noopener" aria-label="在 Google 地图中打开${place.name}">⌖ ${place.name}</a>`).join("")}</span>` : "";
+        return `
         <div class="event ${event[2] ? "confirmed" : ""}">
-          <time>${event[0]}</time><i></i><span><strong>${event[1]}</strong>${event[3] ? `<em class="tag">${event[3]}</em>` : ""}</span>
-        </div>`).join("");
+          <time>${event[0]}</time><i></i><span><strong>${event[1]}</strong>${event[3] ? `<em class="tag">${event[3]}</em>` : ""}${placeLinks}</span>
+        </div>`;
+      }).join("");
       card.innerHTML = `
         <div class="date"><b>${item.date}</b><span>Day ${String(item.day).padStart(2, "0")} · ${item.weekday}</span></div>
         <div class="day-main"><h3>${item.title}</h3><p class="day-summary">${item.summary}</p><div class="events">${events}</div></div>
         <span class="chevron" aria-hidden="true">›</span>`;
-      card.addEventListener("click", () => selectDay(index));
+      card.addEventListener("click", event => { if (!event.target.closest("a")) selectDay(index); });
       card.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") selectDay(index); });
       daysRoot.appendChild(card);
     });
@@ -652,9 +742,45 @@
       icon: L.divIcon({ className: "day-marker", html: `<span class="marker-dot ${index === 0 ? "active" : ""}">${item.day}</span>`, iconSize: [30, 30], iconAnchor: [15, 15] })
     }).addTo(map).on("click", () => selectDay(index)));
 
-    function updateCaption(item) {
-      const query = encodeURIComponent(item.focus);
-      mapCaption.innerHTML = `<small>DAY ${String(item.day).padStart(2, "0")} · ${item.cityName}</small><h3>${item.focus}</h3><p>${item.note}</p><a href="https://www.google.com/maps/search/?api=1&query=${query}" target="_blank" rel="noopener">在 Google 地图中打开 ↗</a>`;
+    const placeLayer = L.layerGroup().addTo(map);
+    let placeMarkers = [];
+
+    function placeIcon(number, active = false) {
+      return L.divIcon({ className: "place-marker", html: `<span class="place-marker-dot ${active ? "active" : ""}">${number}</span>`, iconSize: [22, 22], iconAnchor: [11, 11] });
+    }
+
+    function renderPlaceMarkers(item) {
+      placeLayer.clearLayers();
+      placeMarkers = item.places.map((place, placeIndex) => {
+        const marker = L.marker(place.coords, { icon: placeIcon(placeIndex + 1, place.name === item.focus) })
+          .bindTooltip(place.name, { className: "place-tooltip", direction: "top", offset: [0, -8] })
+          .addTo(placeLayer)
+          .on("click", () => selectPlace(item, placeIndex));
+        return marker;
+      });
+    }
+
+    function moveMap(coords, zoom, duration) {
+      const container = map.getContainer();
+      map.stop();
+      if (container.offsetWidth && container.offsetHeight) {
+        map.flyTo(coords, zoom, { duration });
+      } else {
+        map.setView(coords, zoom, { animate: false });
+      }
+    }
+
+    function selectPlace(item, placeIndex) {
+      const place = item.places[placeIndex];
+      placeMarkers.forEach((marker, index) => marker.setIcon(placeIcon(index + 1, index === placeIndex)));
+      moveMap(place.coords, Math.max(item.zoom, 15), .55);
+      updateCaption(item, place);
+    }
+
+    function updateCaption(item, selectedPlace) {
+      const place = selectedPlace || item.places.find(candidate => candidate.name === item.focus) || item.places[0];
+      const placeLinks = item.places.map(candidate => `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(candidate.query)}" target="_blank" rel="noopener">${candidate.name}</a>`).join("");
+      mapCaption.innerHTML = `<small>DAY ${String(item.day).padStart(2, "0")} · ${item.cityName} · ${item.places.length} 个地点</small><h3>${place.name}</h3><p>${item.note}</p><a class="map-primary-link" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.query)}" target="_blank" rel="noopener">在 Google 地图中打开 ↗</a><div class="map-place-links" aria-label="当天地点">${placeLinks}</div>`;
     }
 
     function selectDay(index) {
@@ -664,7 +790,8 @@
       markers.forEach((marker, markerIndex) => {
         marker.setIcon(L.divIcon({ className: "day-marker", html: `<span class="marker-dot ${markerIndex === index ? "active" : ""}">${itinerary[markerIndex].day}</span>`, iconSize: [30, 30], iconAnchor: [15, 15] }));
       });
-      map.flyTo(item.center, item.zoom, { duration: .75 });
+      renderPlaceMarkers(item);
+      moveMap(item.center, item.zoom, .75);
       updateCaption(item);
     }
 
@@ -692,6 +819,7 @@
       });
     });
 
+    renderPlaceMarkers(itinerary[0]);
     updateCaption(itinerary[0]);
   </script>
 </body>
