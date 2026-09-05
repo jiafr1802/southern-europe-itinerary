@@ -271,15 +271,15 @@
     .food-warning { background: rgba(180,59,47,.12); border-color: rgba(180,59,47,.45); }
     .food-warning p { margin: 0; }
     .driver-menu { margin-top: 44px; border-top: 1px solid rgba(255,255,255,.18); padding-top: 34px; }
-    .driver-menu-head { display: grid; grid-template-columns: .8fr 1.2fr; gap: 7vw; align-items: end; margin-bottom: 20px; }
+    .driver-menu-head { margin-bottom: 20px; }
     .driver-menu-head .eyebrow { color: #e5b44d; }
     .driver-menu-head h3 { margin: 0; font: 600 27px/1.25 "Noto Serif SC", serif; }
     .driver-menu-head p { margin: 0; color: rgba(247,241,229,.62); font-size: 12px; line-height: 1.75; }
     .piastri-menu { position: relative; overflow: hidden; display: grid; grid-template-columns: 240px 1fr; border: 1px solid rgba(229,180,77,.42); background: #f5efe2; color: var(--ink); }
     .piastri-menu::after { content: "81"; position: absolute; right: -6px; bottom: -42px; color: rgba(180,59,47,.07); font: 700 180px/1 "Noto Serif SC", serif; pointer-events: none; }
-    .menu-cover { position: relative; z-index: 1; padding: 30px 26px; color: #fff; background: var(--red-dark); display: flex; flex-direction: column; justify-content: space-between; min-height: 320px; }
+    .menu-cover { position: relative; z-index: 1; padding: 30px 26px; color: #fff; background: linear-gradient(180deg, rgba(12,12,11,.76) 0%, rgba(12,12,11,.12) 42%, rgba(12,12,11,.82) 100%), url("op81.jpeg") center 22% / cover; display: flex; flex-direction: column; justify-content: space-between; min-height: 320px; }
     .menu-cover small { color: rgba(255,255,255,.65); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; }
-    .menu-cover h4 { margin: 12px 0 0; font: 600 28px/1.2 "Noto Serif SC", serif; }
+    .menu-cover h4 { margin: 12px 0 0; font: 600 28px/1.2 "Noto Serif SC", serif; text-shadow: 0 2px 14px rgba(0,0,0,.65); }
     .menu-cover .koala { display: block; margin-top: 14px; font-size: 29px; }
     .menu-location { padding-top: 17px; border-top: 1px solid rgba(255,255,255,.25); font-size: 11px; line-height: 1.6; }
     .menu-location b { display: block; margin-bottom: 3px; color: #e5b44d; font-weight: 600; }
@@ -531,8 +531,7 @@
           </div>
           <section class="driver-menu" aria-labelledby="piastri-menu-title">
             <header class="driver-menu-head">
-              <div><p class="eyebrow">Italy · Driver's table</p><h3 id="piastri-menu-title">喜欢的 F1 车手菜单</h3></div>
-              <p>把意大利段想吃的菜做成车手主题菜单。第一份从蒙扎开始：奥斯卡·皮亚斯特里的四道式组合，地点确认后再补进路线。</p>
+              <div><p class="eyebrow">Italy · Driver's table</p><h3 id="piastri-menu-title">Oscar Piastri 菜单</h3></div>
             </header>
             <article class="piastri-menu">
               <div class="menu-cover">
